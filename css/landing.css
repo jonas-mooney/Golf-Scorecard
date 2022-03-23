@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #3D6F63;
+}
+body #header {
+  font-size: 5em;
+}
+@media only screen and (max-width: 906px) {
+  body #header {
+    font-size: 3em;
+  }
+}
+@media only screen and (max-width: 530px) {
+  body #header {
+    font-size: 2.5em;
+  }
+}
+body .scoreTable {
+  width: 80vw;
+}
+body .scoreTable tr {
+  background-color: white;
+  height: 3em;
+  border: 1px solid black;
+}
+body .scoreTable tr td {
+  width: 15px;
+  background-color: #FF6164;
+  border: 1px solid black;
+  text-align: center;
+}
+body .scoreTable tr .nameInput {
+  width: 1em;
+}
+body .scoreTable tr .nameInput input {
+  width: 8em;
+}
+body .scoreTable #initials {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+#courseOptions {
+  display: flex;
+  justify-content: space-around;
+  width: 80vw;
+  margin-top: 40px;
+}
+@media only screen and (max-width: 906px) {
+  #courseOptions {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 30em;
+  }
+}
+@media only screen and (max-width: 530px) {
+  #courseOptions {
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 20em;
+  }
+}
+#courseOptions .card {
+  margin: 5px;
+  padding: 20px;
+  max-width: 300px;
+  background-color: #FF6164;
+}
+#courseOptions .card img {
+  height: 210px;
+}
+#courseOptions .card .footer {
+  display: flex;
+  justify-content: center;
+}
+#courseOptions .card .footer a {
+  z-index: 2;
+  width: 75vw;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+#courseOptions .card .footer button {
+  width: 18em;
+  height: 10vh;
+  border-radius: 2em;
+  z-index: 1;
+}
+
+/*# sourceMappingURL=landing.css.map */
