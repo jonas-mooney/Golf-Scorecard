@@ -48,6 +48,9 @@ function buildCourses(myCourses) {
   course3.addEventListener('click', getData);
 }
 
+// testing
+getData();
+// testing
 
 // getData();
 

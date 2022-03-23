@@ -30,80 +30,112 @@ body {
     }
   }
 
-  .scoreTable {
-    width: 80vw;
+  // .scoreTable {
+  //   width: 80vw;
 
-    tr {
-      background-color: white;
-      height: 3em;
-      border: 1px solid black;
+  //   tr {
+  //     background-color: white;
+  //     height: 3em;
+  //     border: 1px solid black;
       
-      td {
-        width: 15px;
-        background-color: $base-brown;
-        border: 1px solid black;
-        text-align: center;
-      }
-        .nameInput {
-          width: 1em;
+  //     td {
+  //       width: 15px;
+  //       background-color: $base-brown;
+  //       border: 1px solid black;
+  //       text-align: center;
+  //     }
+  //       .nameInput {
+  //         width: 1em;
           
-          input {
-            width: 8em;
-          }
-        }
-    }
+  //         input {
+  //           width: 8em;
+  //         }
+  //       }
+  //   }
 
-    #initials {
-      writing-mode: vertical-rl;
-      text-orientation: upright;
-    }
-  }
-}
+  //   #initials {
+  //     writing-mode: vertical-rl;
+  //     text-orientation: upright;
+  //   }
+  // }
 
-#courseOptions {
-  display: flex;
-  justify-content: space-around;
-  width: 80vw;
-  margin-top: 40px;
 
-  @media only screen and (max-width: 906px) {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    width: 30em;
-  }
-  @media only screen and (max-width: 530px) {
+  #courseOptions {
+    display: flex;
+    justify-content: space-around;
+    width: 80vw;
+    margin-top: 40px;
+
+    @media only screen and (max-width: 906px) {
       flex-direction: column;
       justify-content: flex-start;
-      width: 20em;
-  }
-
-  .card {
-    margin: 5px;
-    padding: 20px;
-    max-width: 300px;
-    background-color: $base-brown;
-
-    img {
-      height: 210px;
+      align-items: center;
+      width: 30em;
     }
-    .footer {
-      display: flex;
-      justify-content: center;
+    @media only screen and (max-width: 530px) {
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 20em;
+    }
 
-      a {
-        z-index: 2;
-        width: 75vw;
+    .card {
+      margin: 5px;
+      padding: 20px;
+      max-width: 300px;
+      background-color: $base-brown;
+
+      img {
+        height: 210px;
+      }
+      .footer {
         display: flex;
-        align-items: center;
-        text-decoration: none;
-      }
-      button {
-        width: 18em;
-        height: 10vh;
-        border-radius: 2em;
-        z-index: 1;
+        justify-content: center;
+
+        a {
+          z-index: 2;
+          width: 75vw;
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+        }
+        button {
+          width: 18em;
+          height: 10vh;
+          border-radius: 2em;
+          z-index: 1;
+        }
       }
     }
   }
-}
+
+  #courseScorecard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80vw;
+    height: 80vh;
+    background-color: #DDDCC8;
+
+    table {
+      width: 80vw;
+      text-align: center;
+
+      tr {
+        border: 1px solid black;
+        display: flex;
+        justify-content: space-around;
+      }
+      th {
+        // border: 1px solid black;
+        display: block;
+      }
+    }
+  }
+
+
+
+
+
+
+
+} //body
