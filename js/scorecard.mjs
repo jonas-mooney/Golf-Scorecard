@@ -24,8 +24,26 @@ function renderScorecard(courseData) {
 
   let table = document.createElement('table');
   let headerRow = document.createElement('tr');
-  let row2 = document.createElement('tr');
+  headerRow.append('HOLE');
 
+  let proRow = document.createElement('tr');
+  proRow.append('PRO');
+
+  let handicapRow = document.createElement('tr');
+  handicapRow.append('HANDICAP');
+
+  let playerOne = document.createElement('tr');
+  playerOne.append('Add Player Name');
+
+  let playerTwo = document.createElement('tr');
+  playerTwo.append('Add Player Name');
+
+  let playerThree = document.createElement('tr');
+  playerThree.append('Add Player Name');
+
+
+
+  ////////////////////////////////////////////////////////////////////////////
   courseData.holes.forEach(holeNumber => {
     holeNumber = holeNumber.hole;
     let header = document.createElement('th');
@@ -36,25 +54,53 @@ function renderScorecard(courseData) {
 
   courseData.holes.forEach(pro => {
     let par = pro.teeBoxes[0].par;
-    // let tableRow = document.createElement('tr');
+    let header = document.createElement('th');
     let textNode = document.createTextNode(par);
-    row2.appendChild(textNode);
-    
-    
+    header.appendChild(textNode);
+    proRow.appendChild(header);
+  })
+
+  courseData.holes.forEach(pro => {
+    let handicap = pro.teeBoxes[0].hcp;
+    let header = document.createElement('th');
+    let textNode = document.createTextNode(handicap);
+    header.appendChild(textNode);
+    handicapRow.appendChild(header);
+  })
+
+  courseData.holes.forEach(hole => {
+    let header = document.createElement('input');
+    let textNode = document.createElement('input');
+    header.appendChild(textNode);
+    playerOne.appendChild(header);
+  })
+
+  courseData.holes.forEach(hole => {
+    let header = document.createElement('input');
+    let textNode = document.createElement('input');
+    header.appendChild(textNode);
+    playerTwo.appendChild(header);
+  })
+
+  courseData.holes.forEach(hole => {
+    let header = document.createElement('input');
+    let textNode = document.createElement('input');
+    header.appendChild(textNode);
+    playerThree.appendChild(header);
   })
 
 
+////////////////////////////////////////////////////////////////////////////
 
 
 
-  table.appendChild(headerRow);
   scorecard.appendChild(table);
-
-  table.appendChild(row2);
-
-
-
-
+  table.appendChild(headerRow);
+  table.appendChild(proRow);
+  table.appendChild(handicapRow);
+  table.appendChild(playerOne);
+  table.appendChild(playerTwo);
+  table.appendChild(playerThree);
 
 
 
