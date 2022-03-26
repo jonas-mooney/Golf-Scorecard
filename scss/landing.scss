@@ -62,6 +62,9 @@ body {
 
   #courseOptions {
     display: flex;
+    // testing
+    display: none;
+    // testing
     justify-content: space-around;
     width: 80vw;
     margin-top: 40px;
@@ -113,12 +116,13 @@ body {
     flex-direction: column;
     align-items: center;
     width: 80vw;
-    height: 50vh;
+    height: auto;
     background-color: #DDDCC8;
 
     table {
       width: 80vw;
       text-align: center;
+      border: 2px solid black;
 
       tr {
         border: 1px solid black;
@@ -126,7 +130,13 @@ body {
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+
+        h4 {
+          margin: 0;
+          width: 5em;
+        }
       }
+
       th {
         // border: 1px solid black;
         display: block;
@@ -134,8 +144,12 @@ body {
         // display: flex;
         // align-items: center;
       }
+
       input {
         width: 2em;
+        background-color: #DDDCC8;
+        display: flex;
+        text-align: center;
       }
     }
   }

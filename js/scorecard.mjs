@@ -23,14 +23,20 @@ function renderScorecard(courseData) {
   // console.log(courseData.holes[0].teeBoxes[0].par);
 
   let table = document.createElement('table');
-  let headerRow = document.createElement('tr');
-  headerRow.append('HOLE');
+  let holeRow = document.createElement('tr');
+  let holeRowLabel = document.createElement('h4');
+  holeRowLabel.append('HOLE')
+  holeRow.append(holeRowLabel);
 
   let proRow = document.createElement('tr');
-  proRow.append('PRO');
+  let proRowLabel = document.createElement('h4');
+  proRowLabel.append('PRO');
+  proRow.append(proRowLabel);
 
   let handicapRow = document.createElement('tr');
-  handicapRow.append('HANDICAP');
+  let handicapRowLabel = document.createElement('h4')
+  handicapRowLabel.append('HANDICAP');
+  handicapRow.append(handicapRowLabel);
 
   let playerOne = document.createElement('tr');
   playerOne.append('Add Player Name');
@@ -41,6 +47,13 @@ function renderScorecard(courseData) {
   let playerThree = document.createElement('tr');
   playerThree.append('Add Player Name');
 
+  let playerFour = document.createElement('tr');
+  playerFour.append('Add Player Name')
+
+  let parRow = document.createElement('tr');
+  let parRowLabel = document.createElement('h4');
+  parRowLabel.append('PAR');
+  parRow.append(parRowLabel);
 
 
   ////////////////////////////////////////////////////////////////////////////
@@ -49,13 +62,13 @@ function renderScorecard(courseData) {
     let header = document.createElement('th');
     let textNode = document.createTextNode(holeNumber);
     header.appendChild(textNode);
-    headerRow.appendChild(header);
+    holeRow.appendChild(header);
   });
 
   courseData.holes.forEach(pro => {
-    let par = pro.teeBoxes[0].par;
+    let meters = pro.teeBoxes[0].meters;
     let header = document.createElement('th');
-    let textNode = document.createTextNode(par);
+    let textNode = document.createTextNode(meters);
     header.appendChild(textNode);
     proRow.appendChild(header);
   })
@@ -69,24 +82,39 @@ function renderScorecard(courseData) {
   })
 
   courseData.holes.forEach(hole => {
-    let header = document.createElement('input');
+    let header = document.createElement('th');
     let textNode = document.createElement('input');
     header.appendChild(textNode);
     playerOne.appendChild(header);
   })
 
   courseData.holes.forEach(hole => {
-    let header = document.createElement('input');
+    let header = document.createElement('th');
     let textNode = document.createElement('input');
     header.appendChild(textNode);
     playerTwo.appendChild(header);
   })
 
   courseData.holes.forEach(hole => {
-    let header = document.createElement('input');
+    let header = document.createElement('th');
     let textNode = document.createElement('input');
     header.appendChild(textNode);
     playerThree.appendChild(header);
+  })
+
+  courseData.holes.forEach(hole => {
+    let header = document.createElement('th');
+    let textNode = document.createElement('input');
+    header.appendChild(textNode);
+    playerFour.appendChild(header);
+  })
+
+  courseData.holes.forEach(pro => {
+    let par = pro.teeBoxes[0].par;
+    let header = document.createElement('th');
+    let textNode = document.createTextNode(par);
+    header.appendChild(textNode);
+    parRow.appendChild(header);
   })
 
 
@@ -95,13 +123,17 @@ function renderScorecard(courseData) {
 
 
   scorecard.appendChild(table);
-  table.appendChild(headerRow);
+  let out = document.createElement('th');
+  out.append('OUT');
+  holeRow.insertAdjacentElement('afterend', out);
+  table.appendChild(holeRow);
   table.appendChild(proRow);
   table.appendChild(handicapRow);
   table.appendChild(playerOne);
   table.appendChild(playerTwo);
   table.appendChild(playerThree);
-
+  table.appendChild(playerFour);
+  table.appendChild(parRow);
 
 
 }
