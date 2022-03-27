@@ -95,11 +95,14 @@ body #courseScorecard table tr h4 {
   margin: 0;
   width: 5em;
 }
+body #courseScorecard table tr h5 {
+  margin: auto 0;
+}
 body #courseScorecard table th {
   display: block;
   width: 2em;
 }
-body #courseScorecard table input {
+body #courseScorecard table th input {
   width: 2em;
   background-color: #DDDCC8;
   display: flex;

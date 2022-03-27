@@ -135,6 +135,9 @@ body {
           margin: 0;
           width: 5em;
         }
+        h5 {
+          margin: auto 0;
+        }
       }
 
       th {
@@ -143,14 +146,15 @@ body {
         width: 2em;
         // display: flex;
         // align-items: center;
+        
+        input {
+          width: 2em;
+          background-color: #DDDCC8;
+          display: flex;
+          text-align: center;
+        }
       }
 
-      input {
-        width: 2em;
-        background-color: #DDDCC8;
-        display: flex;
-        text-align: center;
-      }
     }
   }
 
