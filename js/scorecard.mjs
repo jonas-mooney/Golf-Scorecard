@@ -70,6 +70,11 @@ function renderScorecard(courseData) {
     let textNode = document.createTextNode(holeNumber);
     header.appendChild(textNode);
     holeRow.appendChild(header);
+    if (holeNumber == 8) {
+      let outHeader = document.createElement('th');
+      outHeader.append('OUT');
+      holeRow.appendChild(outHeader);
+    }
   });
 
   //////////////////
@@ -82,6 +87,11 @@ function renderScorecard(courseData) {
     let textNode = document.createTextNode(meters);
     header.appendChild(textNode);
     proRow.appendChild(header);
+    if (meters == 157) {
+      let proHalfTotal = document.createElement('th');
+      proHalfTotal.append(2651);
+      proRow.appendChild(proHalfTotal);
+    }
   })
   let proTotalElement = document.createElement('th');
   proTotalElement.append(proTotal);
@@ -95,6 +105,11 @@ function renderScorecard(courseData) {
     let textNode = document.createTextNode(handicap);
     header.appendChild(textNode);
     handicapRow.appendChild(header);
+    if (handicap == 17) {
+      let handicapTotal = document.createElement('th');
+      handicapTotal.append('');
+      handicapRow.appendChild(handicapTotal);
+    }
   })
   let handicapPlaceholder = document.createElement('th');
   handicapRow.appendChild(handicapPlaceholder);

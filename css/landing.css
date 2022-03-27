@@ -25,6 +25,7 @@ body #header {
 }
 body #courseOptions {
   display: flex;
+  display: none;
   justify-content: space-around;
   width: 80vw;
   margin-top: 40px;
