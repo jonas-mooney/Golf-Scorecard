@@ -25,7 +25,6 @@ body #header {
 }
 body #courseOptions {
   display: flex;
-  display: none;
   justify-content: space-around;
   width: 80vw;
   margin-top: 40px;
@@ -57,19 +56,22 @@ body #courseOptions .card img {
 body #courseOptions .card .footer {
   display: flex;
   justify-content: center;
+  max-width: 280px;
 }
 body #courseOptions .card .footer a {
-  z-index: 2;
   width: 75vw;
+  max-width: 280px;
   display: flex;
   align-items: center;
   text-decoration: none;
+  justify-content: center;
 }
-body #courseOptions .card .footer button {
-  width: 18em;
-  height: 10vh;
+body #courseOptions .card .footer a button {
+  width: 180px;
+  height: 5vh;
   border-radius: 2em;
   z-index: 1;
+  max-width: 280px;
 }
 body #courseScorecard {
   display: flex;

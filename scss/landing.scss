@@ -63,7 +63,7 @@ body {
   #courseOptions {
     display: flex;
     // testing
-    display: none;
+    // display: none;
     // testing
     justify-content: space-around;
     width: 80vw;
@@ -93,19 +93,23 @@ body {
       .footer {
         display: flex;
         justify-content: center;
+        max-width: 280px;
 
         a {
-          z-index: 2;
           width: 75vw;
+          max-width: 280px;
           display: flex;
           align-items: center;
           text-decoration: none;
-        }
-        button {
-          width: 18em;
-          height: 10vh;
-          border-radius: 2em;
-          z-index: 1;
+          justify-content: center;
+          
+          button {
+            width: 180px;
+            height: 5vh;
+            border-radius: 2em;
+            z-index: 1;
+            max-width: 280px;
+          }
         }
       }
     }
