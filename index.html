@@ -12,7 +12,18 @@
   <h1 id='header'>Choose Your Course</h1>
 
   <div class="container" id="courseOptions"></div>
-  <div class="container" id="courseScorecard"></div>
+  <div class="container" id="courseScorecard">
+    <table class="table table-bordered">
+      <thead>
+        <tr id="holeNumberRow"></tr>
+      </thead>
+      <tbody>
+        <tr id="proRow"></tr>
+        <tr id="handicapRow"></tr>
+        <tr id="parRow"></tr>
+      </tbody>
+    </table>
+  </div>
   
   <script type="module" src="./js/scorecard.mjs"></script>
   <script type="module" src="./js/landing.js"></script>
