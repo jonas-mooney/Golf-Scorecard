@@ -63,7 +63,7 @@ body {
   #courseOptions {
     display: flex;
     // testing
-    // display: none;
+    display: none;
     // testing
     justify-content: space-around;
     width: 80vw;
@@ -134,6 +134,19 @@ body {
 
         th, td {
           width: 3.5em;
+        }
+
+        input {
+          width: 2em;
+          text-align: center;
+        }
+
+        .nameOfPlayer {
+          width: auto;
+          border: none;
+          text-align: center;
+          font-size: x-large;
+          font-weight: 600;
         }
 
       }

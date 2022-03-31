@@ -49,7 +49,7 @@ function buildCourses(myCourses) {
 }
 
 // testing
-// getData();
+getData();
 // testing
 
 // getData();

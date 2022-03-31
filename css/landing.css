@@ -25,6 +25,7 @@ body #header {
 }
 body #courseOptions {
   display: flex;
+  display: none;
   justify-content: space-around;
   width: 80vw;
   margin-top: 40px;
@@ -90,6 +91,17 @@ body #courseScorecard table tr {
 }
 body #courseScorecard table tr th, body #courseScorecard table tr td {
   width: 3.5em;
+}
+body #courseScorecard table tr input {
+  width: 2em;
+  text-align: center;
+}
+body #courseScorecard table tr .nameOfPlayer {
+  width: auto;
+  border: none;
+  text-align: center;
+  font-size: x-large;
+  font-weight: 600;
 }
 
 /*# sourceMappingURL=landing.css.map */

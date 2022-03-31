@@ -5,6 +5,18 @@ let scorecard = document.querySelector('#courseScorecard');
 
 let courseId = localStorage.getItem('Choice');
 
+class Utils {
+  static newGuide() {
+    return `${s4()}-${s4()}-${s4()}-${s4()}`;
+
+    function s4() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+  }
+}
+
 export function getData() {
   return fetch(`https://golf-courses-api.herokuapp.com/courses/${courseId}`)
   .then(response => response.json())
@@ -73,6 +85,38 @@ function renderScorecard(courseData) {
       }
       document.querySelector('#handicapRow').innerHTML = handicapRow;
       })
+// PLAYER ONE
+      let playerOneRow = '';
+      let playerOneIds = [];
+      playerOneRow += `<input type='text' class='nameOfPlayer' id='123' placeholder='Enter Player Name'>`;
+      courseData.holes.forEach((hole, index) => {
+        let randomId = Utils.newGuide();
+        playerOneRow += `<th><input type='text' id='${randomId}' onblur='getOneTotal'></th>`;
+        playerOneIds.push(randomId);
+        if (index == 8) {
+          playerOneRow += `<th id='oneOut'>0</th>`
+          playerOneRow += `<th>GA</th>`
+        }
+        if (index == 17) {
+          playerOneRow += `<th id='oneIn'>0</th>`
+          playerOneRow += `<th id='oneTotal'>0</th>`
+        }
+
+      })
+        document.querySelector('#playerOneRow').innerHTML = playerOneRow;
+
+      console.log(playerOneIds);
+
+      let inputOneTotal = 0;
+      getOneTotal();
+      function getOneTotal() {
+        for (let i=0; i <= playerOneIds.length; i++) {
+          let inputId = document.getElementById(playerOneIds[i]);
+          inputOneTotal += inputId;
+        }
+      }
+      
+
 ///PAR
       let parRow = '';
       let parTotal = 0;
