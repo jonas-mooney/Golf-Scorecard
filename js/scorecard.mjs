@@ -91,7 +91,7 @@ function renderScorecard(courseData) {
       playerOneRow += `<input type='text' class='nameOfPlayer' id='123' placeholder='Enter Player Name'>`;
       courseData.holes.forEach((hole, index) => {
         let randomId = Utils.newGuide();
-        playerOneRow += `<th><input type='text' id='${randomId}' onblur='getOneTotal'></th>`;
+        playerOneRow += `<th><input type='text' id='${randomId}' onkeyup='getOneTotal()'></th>`;
         playerOneIds.push(randomId);
         if (index == 8) {
           playerOneRow += `<th id='oneOut'>0</th>`
@@ -105,17 +105,18 @@ function renderScorecard(courseData) {
       })
         document.querySelector('#playerOneRow').innerHTML = playerOneRow;
 
-      console.log(playerOneIds);
+      // console.log(playerOneIds);
 
-      let inputOneTotal = 0;
-      getOneTotal();
-      function getOneTotal() {
-        for (let i=0; i <= playerOneIds.length; i++) {
-          let inputId = document.getElementById(playerOneIds[i]);
-          inputOneTotal += inputId;
+      window.getOneTotal = () => {
+        let inputOneTotal = 0;
+        for (let i=0; i < playerOneIds.length; i++) {
+          let input = document.getElementById(playerOneIds[i]);
+          inputOneTotal += +input.value;
         }
+        document.querySelector('#oneOut').innerText = inputOneTotal;
       }
       
+      //keyup
 
 ///PAR
       let parRow = '';
