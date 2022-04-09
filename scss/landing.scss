@@ -30,40 +30,10 @@ body {
     }
   }
 
-  // .scoreTable {
-  //   width: 80vw;
-
-  //   tr {
-  //     background-color: white;
-  //     height: 3em;
-  //     border: 1px solid black;
-      
-  //     td {
-  //       width: 15px;
-  //       background-color: $base-brown;
-  //       border: 1px solid black;
-  //       text-align: center;
-  //     }
-  //       .nameInput {
-  //         width: 1em;
-          
-  //         input {
-  //           width: 8em;
-  //         }
-  //       }
-  //   }
-
-  //   #initials {
-  //     writing-mode: vertical-rl;
-  //     text-orientation: upright;
-  //   }
-  // }
-
-
   #courseOptions {
     display: flex;
     // testing
-    display: none;
+    // display: none;
     // testing
     justify-content: space-around;
     width: 80vw;
@@ -86,6 +56,12 @@ body {
       padding: 20px;
       max-width: 300px;
       background-color: $base-brown;
+
+      .card-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
       img {
         height: 210px;
@@ -129,11 +105,11 @@ body {
       // border: 2px solid black;
 
       tr {
-        // width: 80vw;
-        border: 1px solid black;
+        border: 2px solid black;
 
         th, td {
           width: 3.5em;
+          border: 2px solid black;
         }
 
         input {
@@ -148,58 +124,7 @@ body {
           font-size: x-large;
           font-weight: 600;
         }
-
       }
     }
-
-    // ORIGINAL TABLE ATTRIBUTES BEFORE 3/28
-    // table {
-    //   width: 80vw;
-    //   text-align: center;
-    //   border: 2px solid black;
-
-    //   tr {
-    //     border: 1px solid black;
-    //     height: 3em;
-    //     display: flex;
-    //     justify-content: space-evenly;
-    //     align-items: center;
-
-    //     h4 {
-    //       margin: 0;
-    //       width: 5em;
-    //     }
-    //     h5 {
-    //       margin: auto 0;
-    //     }
-    //   }
-
-    //   th {
-    //     // border: 1px solid black;
-    //     display: block;
-    //     width: 2em;
-    //     // display: flex;
-    //     // align-items: center;
-        
-    //     input {
-    //       width: 2em;
-    //       background-color: #DDDCC8;
-    //       display: flex;
-    //       text-align: center;
-    //     }
-    //   }
-
-    // }
-    // ORIGINAL TABLE ATTRIBUTES BEFORE 3/28 ^^
-
-
-
   }
-
-
-
-
-
-
-
-} //body
+}

@@ -1,9 +1,5 @@
-
 let courseData = 0;
-
 let scorecard = document.querySelector('#courseScorecard');
-
-let courseId = localStorage.getItem('Choice');
 
 class Utils {
   static newGuide() {
@@ -18,7 +14,7 @@ class Utils {
 }
 
 export function getData() {
-  return fetch(`https://golf-courses-api.herokuapp.com/courses/${courseId}`)
+  return fetch(`https://golf-courses-api.herokuapp.com/courses/${localStorage.getItem('Choice')}`)
   .then(response => response.json())
   .then(data => courseData = data.data)
   .then(() => {
@@ -27,7 +23,8 @@ export function getData() {
 }
 
 function renderScorecard(courseData) {
-  document.querySelector('#header').innerHTML = courseData.name
+  console.log(courseData.name)
+  document.querySelector('#header').innerHTML = courseData.name;
   document.querySelector('#courseOptions').innerHTML = null;
 ///HOLE
     let holeRow = '';
@@ -105,18 +102,137 @@ function renderScorecard(courseData) {
       })
         document.querySelector('#playerOneRow').innerHTML = playerOneRow;
 
-      // console.log(playerOneIds);
-
       window.getOneTotal = () => {
-        let inputOneTotal = 0;
-        for (let i=0; i < playerOneIds.length; i++) {
+        let oneTotal = 0;
+        let oneOut = 0;
+        let oneIn = 0;
+        for (let i=0; i < 9; i++) {
           let input = document.getElementById(playerOneIds[i]);
-          inputOneTotal += +input.value;
+          oneOut += +input.value;
         }
-        document.querySelector('#oneOut').innerText = inputOneTotal;
+        for (let i=9; i < 18; i++) {
+          let input = document.getElementById(playerOneIds[i]);
+          oneIn += +input.value;
+        }
+
+        document.querySelector('#oneOut').innerText = oneOut;
+        document.querySelector('#oneIn').innerText = oneIn;
+        document.querySelector('#oneTotal').innerText = oneOut + oneIn;
       }
       
-      //keyup
+// PLAYER TWO
+      let playerTwoRow = '';
+      let playerTwoIds = [];
+      playerTwoRow += `<input type='text' class='nameOfPlayer' id='123' placeholder='Enter Player Name'>`;
+      courseData.holes.forEach((hole, index) => {
+        let randomId = Utils.newGuide();
+        playerTwoRow += `<th><input type='text' id='${randomId}' onkeyup='getTwoTotal()'></th>`;
+        playerTwoIds.push(randomId);
+        if (index == 8) {
+          playerTwoRow += `<th id='twoOut'>0</th>`
+          playerTwoRow += `<th>GA</th>`
+        }
+        if (index == 17) {
+          playerTwoRow += `<th id='twoIn'>0</th>`
+          playerTwoRow += `<th id='twoTotal'>0</th>`
+        }
+
+      })
+        document.querySelector('#playerTwoRow').innerHTML = playerTwoRow;
+
+      window.getTwoTotal = () => {
+        let twoTotal = 0;
+        let twoOut = 0;
+        let twoIn = 0;
+        for (let i=0; i < 9; i++) {
+          let input = document.getElementById(playerTwoIds[i]);
+          twoOut += +input.value;
+        }
+        for (let i=9; i < 18; i++) {
+          let input = document.getElementById(playerTwoIds[i]);
+          twoIn += +input.value;
+        }
+
+        document.querySelector('#twoOut').innerText = twoOut;
+        document.querySelector('#twoIn').innerText = twoIn;
+        document.querySelector('#twoTotal').innerText = twoOut + twoIn;
+      }
+
+// PLAYER THREE
+  let playerThreeRow = '';
+  let playerThreeIds = [];
+  playerThreeRow += `<input type='text' class='nameOfPlayer' id='123' placeholder='Enter Player Name'>`;
+  courseData.holes.forEach((hole, index) => {
+    let randomId = Utils.newGuide();
+    playerThreeRow += `<th><input type='text' id='${randomId}' onkeyup='getThreeTotal()'></th>`;
+    playerThreeIds.push(randomId);
+    if (index == 8) {
+      playerThreeRow += `<th id='threeOut'>0</th>`
+      playerThreeRow += `<th>GA</th>`
+    }
+    if (index == 17) {
+      playerThreeRow += `<th id='threeIn'>0</th>`
+      playerThreeRow += `<th id='threeTotal'>0</th>`
+    }
+
+  })
+    document.querySelector('#playerThreeRow').innerHTML = playerThreeRow;
+
+  window.getThreeTotal = () => {
+    let threeTotal = 0;
+    let threeOut = 0;
+    let threeIn = 0;
+    for (let i=0; i < 9; i++) {
+      let input = document.getElementById(playerThreeIds[i]);
+      threeOut += +input.value;
+    }
+    for (let i=9; i < 18; i++) {
+      let input = document.getElementById(playerThreeIds[i]);
+      threeIn += +input.value;
+    }
+
+    document.querySelector('#threeOut').innerText = threeOut;
+    document.querySelector('#threeIn').innerText = threeIn;
+    document.querySelector('#threeTotal').innerText = threeOut + threeIn;
+  }
+
+  // PLAYER FOUR
+  let playerFourRow = '';
+  let playerFourIds = [];
+  playerFourRow += `<input type='text' class='nameOfPlayer' id='123' placeholder='Enter Player Name'>`;
+  courseData.holes.forEach((hole, index) => {
+    let randomId = Utils.newGuide();
+    playerFourRow += `<th><input type='text' id='${randomId}' onkeyup='getFourTotal()'></th>`;
+    playerFourIds.push(randomId);
+    if (index == 8) {
+      playerFourRow += `<th id='fourOut'>0</th>`
+      playerFourRow += `<th>GA</th>`
+    }
+    if (index == 17) {
+      playerFourRow += `<th id='fourIn'>0</th>`
+      playerFourRow += `<th id='fourTotal'>0</th>`
+    }
+
+  })
+    document.querySelector('#playerFourRow').innerHTML = playerFourRow;
+
+  window.getFourTotal = () => {
+    let fourTotal = 0;
+    let fourOut = 0;
+    let fourIn = 0;
+    for (let i=0; i < 9; i++) {
+      let input = document.getElementById(playerFourIds[i]);
+      fourOut += +input.value;
+    }
+    for (let i=9; i < 18; i++) {
+      let input = document.getElementById(playerFourIds[i]);
+      fourIn += +input.value;
+    }
+
+    document.querySelector('#fourOut').innerText = fourOut;
+    document.querySelector('#fourIn').innerText = fourIn;
+    document.querySelector('#fourTotal').innerText = fourOut + fourIn;
+  }
 
 ///PAR
       let parRow = '';
@@ -142,225 +258,4 @@ function renderScorecard(courseData) {
       }
       document.querySelector('#parRow').innerHTML = parRow;
       })
-
-
-    //let proTotal = 0;
-//   courseData.holes.forEach(pro => {
-//     proTotal += pro.teeBoxes[0].meters;
-//     let meters = pro.teeBoxes[0].meters;
-//     let header = document.createElement('th');
-//     let textNode = document.createTextNode(meters);
-//     header.appendChild(textNode);
-//     proRow.appendChild(header);
-//     if (meters == 157) {
-//       let proHalfTotal = document.createElement('th');
-//       proHalfTotal.append(2651);
-//       proRow.appendChild(proHalfTotal);
-//     }
-//   })
-//   let proTotalElement = document.createElement('th');
-//   proTotalElement.append(proTotal);
-//   proRow.appendChild(proTotalElement);
-} 
-
-
-
-
-
-
-
-
-// function renderScorecard(courseData) {
-//   document.querySelector('#courseOptions').innerHTML = null;
-//   document.querySelector('#header').innerHTML = courseData.name;
-  
-//   console.log(courseData);
-//   // console.log(courseData.holes[0].teeBoxes[0].hcp);
-//   // console.log(courseData.holes[0].teeBoxes[0].par);
-
-//   // function toInput(header) {
-//   //  let name = document.createElement('input');
-//   //  header.prepend(name);
-//   // }
-
-//   let table = document.createElement('table');
-//   let holeRow = document.createElement('tr');
-//   let holeRowLabel = document.createElement('h4');
-//   holeRowLabel.append('HOLE')
-//   holeRow.append(holeRowLabel);
-
-//   let proRow = document.createElement('tr');
-//   let proRowLabel = document.createElement('h4');
-//   proRowLabel.append('PRO');
-//   proRow.append(proRowLabel);
-
-//   let handicapRow = document.createElement('tr');
-//   let handicapRowLabel = document.createElement('h4')
-//   handicapRowLabel.append('HANDICAP');
-//   handicapRow.append(handicapRowLabel);
-
-//   let playerOne = document.createElement('tr');
-//   playerOne.append('Add Player Name');
-//   // playerOne.addEventListener('click', toInput(playerOne));
-
-//   let playerTwo = document.createElement('tr');
-//   playerTwo.append('Add Player Name');
-
-//   let playerThree = document.createElement('tr');
-//   playerThree.append('Add Player Name');
-
-//   let playerFour = document.createElement('tr');
-//   playerFour.append('Add Player Name')
-
-//   let parRow = document.createElement('tr');
-//   let parRowLabel = document.createElement('h4');
-//   parRowLabel.append('PAR');
-//   parRow.append(parRowLabel);
-
-
-//   ////////////////////////////////////////////////////////////////////////////
-
-//   courseData.holes.forEach(holeNumber => {
-//     holeNumber = holeNumber.hole;
-//     let header = document.createElement('th');
-//     let textNode = document.createTextNode(holeNumber);
-//     header.appendChild(textNode);
-//     holeRow.appendChild(header);
-//     if (holeNumber == 8) {
-//       let outHeader = document.createElement('th');
-//       outHeader.append('OUT');
-//       holeRow.appendChild(outHeader);
-//     }
-//   });
-
-//   //////////////////
-
-//   let proTotal = 0;
-//   courseData.holes.forEach(pro => {
-//     proTotal += pro.teeBoxes[0].meters;
-//     let meters = pro.teeBoxes[0].meters;
-//     let header = document.createElement('th');
-//     let textNode = document.createTextNode(meters);
-//     header.appendChild(textNode);
-//     proRow.appendChild(header);
-//     if (meters == 157) {
-//       let proHalfTotal = document.createElement('th');
-//       proHalfTotal.append(2651);
-//       proRow.appendChild(proHalfTotal);
-//     }
-//   })
-//   let proTotalElement = document.createElement('th');
-//   proTotalElement.append(proTotal);
-//   proRow.appendChild(proTotalElement);
-
-//   //////////////////
-
-//   courseData.holes.forEach(pro => {
-//     let handicap = pro.teeBoxes[0].hcp;
-//     let header = document.createElement('th');
-//     let textNode = document.createTextNode(handicap);
-//     header.appendChild(textNode);
-//     handicapRow.appendChild(header);
-//     if (handicap == 17) {
-//       let handicapTotal = document.createElement('th');
-//       handicapTotal.append('');
-//       handicapRow.appendChild(handicapTotal);
-//     }
-//   })
-//   let handicapPlaceholder = document.createElement('th');
-//   handicapRow.appendChild(handicapPlaceholder);
-
-//   //////////////////
-
-//   let playerOneTotal = 0;
-//   courseData.holes.forEach(hole => {
-//     let header = document.createElement('th');
-//     let textNode = document.createElement('input');
-//     playerOneTotal += textNode.value;
-//     header.appendChild(textNode);
-//     playerOne.appendChild(header);
-//   })
-//   let oneTotal = document.createElement('th');
-//   oneTotal.append(playerOneTotal);
-//   playerOne.appendChild(oneTotal);
-
-//   //////////////////
-
-//   let playerTwoTotal = 0;
-//   courseData.holes.forEach(hole => {
-//     let header = document.createElement('th');
-//     let textNode = document.createElement('input');
-//     header.appendChild(textNode);
-//     playerTwo.appendChild(header);
-//   })
-//   let twoTotal = document.createElement('th');
-//   twoTotal.append(playerTwoTotal);
-//   playerTwo.appendChild(twoTotal);
-
-//   //////////////////
-
-//   let playerThreeTotal = 0;
-//   courseData.holes.forEach(hole => {
-//     let header = document.createElement('th');
-//     let textNode = document.createElement('input');
-//     header.appendChild(textNode);
-//     playerThree.appendChild(header);
-//   })
-//   let threeTotal = document.createElement('th');
-//   threeTotal.append(playerThreeTotal);
-//   playerThree.appendChild(threeTotal);
-
-//   //////////////////
-
-//   let playerFourTotal = 0;
-//   courseData.holes.forEach(hole => {
-//     let header = document.createElement('th');
-//     let textNode = document.createElement('input');
-//     header.appendChild(textNode);
-//     playerFour.appendChild(header);
-//   })
-//   let fourTotal = document.createElement('th');
-//   fourTotal.append(playerFourTotal);
-//   playerFour.appendChild(fourTotal);
-
-//   //////////////////
-
-//   let parTotal = 0;
-//   courseData.holes.forEach(pro => {
-//     parTotal += pro.teeBoxes[0].par;
-//     let par = pro.teeBoxes[0].par;
-//     let header = document.createElement('th');
-//     let textNode = document.createTextNode(par);
-//     header.appendChild(textNode);
-//     parRow.appendChild(header);
-//   })
-//   let parTotalElement = document.createElement('th');
-//   parTotalElement.append(parTotal);
-//   parRow.appendChild(parTotalElement);
-
-//   ////////////////////////////////////////////////////////////////////////////
-
-//   let totalLabel = document.createElement('h5');
-//   totalLabel.append('TOT');
-//   holeRow.appendChild(totalLabel);
-
-
-
-//   ////////////////////////////////////////////////////////////////////////////
-
-
-
-//   scorecard.appendChild(table);
-//   table.appendChild(holeRow);
-//   table.appendChild(proRow);
-//   table.appendChild(handicapRow);
-//   table.appendChild(playerOne);
-//   table.appendChild(playerTwo);
-//   table.appendChild(playerThree);
-//   table.appendChild(playerFour);
-//   table.appendChild(parRow);
-
-
-// }
-
-// #courseScorecard
+}
